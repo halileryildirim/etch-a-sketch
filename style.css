@@ -4,11 +4,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    
 }
 
 .container{
     display: flex;
-    flex: 1;
     flex-wrap: wrap;
-    flex-direction: column;
-}
+    flex-direction: row;
+    width: 960px;
+    height: 960px;
+}  
+
+
