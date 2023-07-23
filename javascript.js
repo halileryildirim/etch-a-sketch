@@ -57,6 +57,7 @@ eraser.addEventListener('click', () => window.addEventListener('mouseover', () =
 
 const resetBtn = document.querySelector('.resetBtn');
 resetBtn.addEventListener('click', () => {
+    window.addEventListener('mouseover', () => color='transparent');
     gridRemover();
     gridDrawer(size);
 });
