@@ -9,8 +9,20 @@ body {
     
 }
 
+.header{
+    background-color: midnightblue;
+    color: white;
+    font-style: italic;
+    display: flex;
+    flex: auto;
+    text-align: center;
+    align-self: flex-start;
+}
+
 .container{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     width: 960px;
     height: 960px;
