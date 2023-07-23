@@ -1,4 +1,4 @@
-let color = 'black';
+let color = 'white';
 const container = document.querySelector('.container')
 
 function gridSizeDecide() {
@@ -25,13 +25,18 @@ function gridDrawer(gridNumber) {
             square.addEventListener('mouseover', () => {
                 square.style.backgroundColor = color;
             })
+
         }
     }  
 }
 
-const gridbtn = document.querySelector('.gridbtn');
+const gridbtn = document.querySelector('.gridBtn');
 gridbtn.addEventListener('click', () => {
-    gridDrawer(0);
+    let theCanvas = document.querySelector('.container');
+
+    while(theCanvas.hasChildNodes()) {
+        theCanvas.removeChild(theCanvas.firstChild);
+    }
     gridDrawer(gridSizeDecide());
 })
 gridDrawer(gridSizeDecide());
