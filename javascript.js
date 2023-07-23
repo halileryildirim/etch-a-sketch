@@ -1,6 +1,3 @@
-let color = 'white';
-const container = document.querySelector('.container')
-
 function gridSizeDecide() {
     let gridSize = 0;
     while (gridSize<3 || gridSize>64) {
@@ -18,7 +15,7 @@ function gridDrawer(gridNumber) {
         for(let j = 0; j<gridNumber; j++) {
             const square = document.createElement('div');
             square.className = 'new-div';
-            square.setAttribute('style', 'outline: 1px solid black; display;flex;')
+            square.setAttribute('style', 'outline: 0.5px solid gray; display;flex;')
             square.style.height = `${squareSize}px`;
             square.style.width = `${squareSize}px`;
             row.appendChild(square);
@@ -30,14 +27,48 @@ function gridDrawer(gridNumber) {
     }  
 }
 
-const gridbtn = document.querySelector('.gridBtn');
-gridbtn.addEventListener('click', () => {
+function gridRemover() {
     let theCanvas = document.querySelector('.container');
-
     while(theCanvas.hasChildNodes()) {
         theCanvas.removeChild(theCanvas.firstChild);
     }
-    gridDrawer(gridSizeDecide());
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+let color;
+const container = document.querySelector('.container')
+let size = gridSizeDecide();
+gridDrawer(size);
+
+
+const gridbtn = document.querySelector('.gridBtn');
+gridbtn.addEventListener('click', () => {
+    gridRemover();
+    size = gridSizeDecide();
+    gridDrawer(size);
 })
-gridDrawer(gridSizeDecide());
+
+const blackBtn = document.querySelector('.blackBtn');
+blackBtn.addEventListener('click', () => color='black');
+
+const rgbBtn = document.querySelector('.rgbBtn');
+rgbBtn.addEventListener('click', () => color= getRandomColor());
+
+const eraser = document.querySelector('.whiteBtn');
+eraser.addEventListener('click', () => color ='transparent');
+
+const resetBtn = document.querySelector('.resetBtn');
+resetBtn.addEventListener('click', () => {
+    gridRemover();
+    gridDrawer(size);
+})
+
 
