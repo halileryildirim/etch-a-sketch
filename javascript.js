@@ -1,37 +1,38 @@
+let color = 'black';
 const container = document.querySelector('.container')
-let gridSize = prompt('Enter Grid Size(3-64):')
 
 function gridSizeDecide() {
+    let gridSize = 0;
     while (gridSize<3 || gridSize>64) {
-        gridSize = prompt('Wrong entry, Enter Grid Size(3-64):');
+        gridSize = prompt('Enter Grid Size(3-64):');
     }
-    return gridSize;
+        return gridSize;
 }
 
-function gridDrawer() {
-    
-function multipleDivs() {
-    squareSize = 960/gridSize;
-    console.log(squareSize)
-    let size = parseInt(squareSize); 
-    for(let i = 0; i<gridSize; i++) {
+function gridDrawer(gridNumber) {
+    squareSize = 960/gridNumber;
+    for(let i = 0; i<gridNumber; i++) {
         let row = container.appendChild(document.createElement('div'));
         row.style.width = `${squareSize}px`;
         row.style.height = "960px";
-        row.setAttribute('style', 'display: flex; flex-direction:row; padding: 0')
-        for(let j = 0; j<gridSize; j++) {
+        for(let j = 0; j<gridNumber; j++) {
             const square = document.createElement('div');
             square.className = 'new-div';
             square.setAttribute('style', 'outline: 1px solid black; display;flex;')
-            square.style.height = `${size}px`;
-            square.style.width = `${size}px`;
+            square.style.height = `${squareSize}px`;
+            square.style.width = `${squareSize}px`;
             row.appendChild(square);
+            square.addEventListener('mouseover', () => {
+                square.style.backgroundColor = color;
+            })
         }
-    }
-    
-}
-multipleDivs();
+    }  
 }
 
-gridSizeDecide();
-gridDrawer();
+const gridbtn = document.querySelector('.gridbtn');
+gridbtn.addEventListener('click', () => {
+    gridDrawer(0);
+    gridDrawer(gridSizeDecide());
+})
+gridDrawer(gridSizeDecide());
+
